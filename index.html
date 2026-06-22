@@ -1,0 +1,548 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Ramagiri Nikhil — AI Video Creator Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css"/>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0;}
+  :root{
+    --syne:'Syne',sans-serif;
+    --inter:'Inter',sans-serif;
+    /* Light Theme Variables */
+    --bg:#fbfbfb;
+    --bg2:#ffffff;
+    --bg3:#f0f0f0;
+    --text:#121212;
+    --text2:#4f4f5a;
+    --muted:#737380;
+    --gold:#b38614; /* Slightly darkened gold for contrast */
+    --gold2:#c9a84c;
+    --border:rgba(179, 134, 20, 0.15);
+    --border2:rgba(179, 134, 20, 0.35);
+  }
+
+  html{scroll-behavior:smooth;}
+  body{
+    background:var(--bg);
+    color:var(--text);
+    font-family:var(--inter);
+    font-size:16px;
+    line-height:1.6;
+    min-height:100vh;
+  }
+
+  /* ── layout ── */
+  .pf-root{max-width:860px;margin:0 auto;padding:0 1.5rem 4rem;}
+
+  /* ── hero ── */
+  .hero{
+    text-align:center;
+    padding:5rem 1.5rem 3.5rem;
+    position:relative;
+    border-bottom:0.5px solid var(--border);
+  }
+  .hero::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background:radial-gradient(ellipse 60% 40% at 50% 0%, rgba(179, 134, 20, 0.05) 0%, transparent 70%);
+    pointer-events:none;
+  }
+  .hero-eyebrow{
+    font-family:var(--syne);
+    font-size:11px;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:1.4rem;
+  }
+  .hero-name{
+    font-family:var(--syne);
+    font-size:clamp(2.4rem,6vw,4rem);
+    font-weight:800;
+    line-height:1.04;
+    letter-spacing:-0.02em;
+    color:var(--text);
+    margin-bottom:0.6rem;
+  }
+  .hero-name span{color:var(--gold);}
+  .hero-sub{
+    font-family:var(--syne);
+    font-size:clamp(0.9rem,2vw,1.05rem);
+    font-weight:400;
+    color:var(--muted);
+    letter-spacing:0.05em;
+    margin-bottom:1.8rem;
+  }
+  .hero-tagline{
+    font-size:0.97rem;
+    color:var(--text2);
+    max-width:540px;
+    margin:0 auto 2.2rem;
+    line-height:1.75;
+  }
+  .hero-loc{
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    font-size:0.8rem;
+    color:var(--muted);
+    border:0.5px solid var(--border2);
+    border-radius:99px;
+    padding:6px 16px;
+    background:var(--bg2);
+  }
+  .hero-loc i{color:var(--gold);font-size:13px;}
+
+  /* ── stat strip ── */
+  .stat-strip{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:0.5px;
+    background:var(--border);
+    border-bottom:0.5px solid var(--border);
+  }
+  .stat-item{
+    background:var(--bg);
+    text-align:center;
+    padding:1.4rem 0.5rem;
+  }
+  .stat-num{
+    font-family:var(--syne);
+    font-size:1.8rem;
+    font-weight:700;
+    color:var(--gold);
+    line-height:1;
+  }
+  .stat-label{
+    font-size:0.68rem;
+    color:var(--muted);
+    letter-spacing:0.08em;
+    text-transform:uppercase;
+    margin-top:5px;
+  }
+
+  /* ── sections ── */
+  .section{padding:3rem 0;}
+  .section-tag{
+    font-family:var(--syne);
+    font-size:0.68rem;
+    letter-spacing:0.18em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:0.5rem;
+  }
+  .section-title{
+    font-family:var(--syne);
+    font-size:1.7rem;
+    font-weight:700;
+    color:var(--text);
+    margin-bottom:0.4rem;
+    letter-spacing:-0.01em;
+  }
+  .section-desc{
+    font-size:0.9rem;
+    color:var(--text2);
+    line-height:1.7;
+    max-width:580px;
+    margin-bottom:2rem;
+  }
+  .divider{height:0.5px;background:var(--border);}
+
+  /* ── works grid ── */
+  .works-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:0.5px;
+    background:var(--border);
+    border:0.5px solid var(--border);
+    border-radius:12px;
+    overflow:hidden;
+  }
+  .work-card{
+    background:var(--bg2);
+    padding:1.6rem;
+    position:relative;
+    transition:background 0.2s;
+  }
+  .work-card:hover{background:var(--bg3);}
+  .work-card.full{grid-column:1/-1;}
+  .work-cat{
+    font-size:0.67rem;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:0.7rem;
+    font-family:var(--syne);
+    display:flex;
+    align-items:center;
+    gap:5px;
+  }
+  .work-title{
+    font-family:var(--syne);
+    font-size:0.97rem;
+    font-weight:700;
+    color:var(--text);
+    margin-bottom:0.55rem;
+    line-height:1.3;
+  }
+  .work-concept{
+    font-size:0.82rem;
+    color:var(--text2);
+    line-height:1.65;
+    margin-bottom:0.9rem;
+  }
+  .work-tags{display:flex;flex-wrap:wrap;gap:5px;}
+  .tag{
+    font-size:0.67rem;
+    padding:3px 10px;
+    border:0.5px solid var(--border2);
+    border-radius:4px;
+    color:var(--text2);
+    background:rgba(179, 134, 20, 0.05);
+  }
+
+  /* ── works link block ── */
+  .works-link-block{
+    margin-top:1.5rem;
+    border:0.5px solid var(--border2);
+    border-radius:12px;
+    padding:1.4rem 1.6rem;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:1rem;
+    flex-wrap:wrap;
+    background:var(--bg2);
+  }
+  .wlb-left strong{
+    font-family:var(--syne);
+    font-size:0.95rem;
+    display:block;
+    color:var(--text);
+    margin-bottom:3px;
+  }
+  .wlb-left p{font-size:0.82rem;color:var(--text2);}
+  .wlb-btn{
+    font-family:var(--syne);
+    font-size:0.75rem;
+    font-weight:500;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--gold);
+    border:0.5px solid var(--gold);
+    border-radius:6px;
+    padding:9px 20px;
+    text-decoration:none;
+    white-space:nowrap;
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    transition:background 0.15s,color 0.15s;
+  }
+  .wlb-btn:hover{background:var(--gold);color:var(--bg2);}
+
+  /* ── skills grid ── */
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:12px;
+  }
+  .skill-card{
+    border:0.5px solid var(--border);
+    border-radius:12px;
+    padding:1.4rem;
+    background:var(--bg2);
+    transition:border-color 0.2s, box-shadow 0.2s;
+  }
+  .skill-card:hover{
+    border-color:var(--border2);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.03);
+  }
+  .skill-icon{font-size:24px;color:var(--gold);margin-bottom:0.7rem;}
+  .skill-name{
+    font-family:var(--syne);
+    font-size:0.9rem;
+    font-weight:700;
+    color:var(--text);
+    margin-bottom:0.35rem;
+  }
+  .skill-desc{font-size:0.8rem;color:var(--text2);line-height:1.6;}
+
+  /* ── contact ── */
+  .contact-grid{
+    display:grid;
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:12px;
+    margin-top:1.6rem;
+  }
+  .contact-item{
+    border:0.5px solid var(--border);
+    border-radius:12px;
+    padding:1.1rem 1.2rem;
+    background:var(--bg2);
+  }
+  .contact-label{
+    font-size:0.67rem;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:var(--muted);
+    margin-bottom:6px;
+    display:flex;
+    align-items:center;
+    gap:5px;
+  }
+  .contact-val{font-size:0.83rem;color:var(--text);word-break:break-all;}
+  .contact-val a{color:var(--gold);text-decoration:none;font-weight:500;}
+  .contact-val a:hover{text-decoration:underline;}
+
+  /* ── footer ── */
+  .footer{
+    text-align:center;
+    padding:2rem 0 0;
+    font-size:0.75rem;
+    color:var(--muted);
+    border-top:0.5px solid var(--border);
+    margin-top:3rem;
+  }
+  .footer span{color:var(--gold);}
+
+  /* ── responsive ── */
+  @media(max-width:600px){
+    .works-grid,.skills-grid,.contact-grid{grid-template-columns:1fr;}
+    .stat-strip{grid-template-columns:repeat(2,1fr);}
+    .work-card.full{grid-column:1;}
+    .hero{padding:3.5rem 0 2.5rem;}
+    .hero-name{font-size:2.2rem;}
+  }
+</style>
+</head>
+<body>
+
+<div class="pf-root">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div class="hero-eyebrow">Portfolio — AI Video Creation</div>
+    <div class="hero-name">Ramagiri <span>Nikhil</span></div>
+    <div class="hero-sub">AI Video Creator &nbsp;·&nbsp; Cinematic Storyteller &nbsp;·&nbsp; Prompt Engineer</div>
+    <p class="hero-tagline">
+      Photorealistic, emotionally engaging, brand-ready video content — from high-energy
+      commercials to cinematic narrative shorts — built entirely with cutting-edge AI generation tools.
+    </p>
+    <span class="hero-loc">
+      <i class="ti ti-map-pin"></i>
+      Hanamkonda, Telangana, India &nbsp;·&nbsp; Available worldwide
+    </span>
+  </div>
+
+  <!-- STAT STRIP -->
+  <div class="stat-strip">
+    <div class="stat-item">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Production categories</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">AI tools mastered</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">∞</div>
+      <div class="stat-label">Prompt iterations</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">100%</div>
+      <div class="stat-label">AI-native pipeline</div>
+    </div>
+  </div>
+
+  <!-- WORKS -->
+  <div class="section">
+    <div class="section-tag">Portfolio showcase</div>
+    <div class="section-title">Selected works</div>
+    <p class="section-desc">
+      Four production verticals — each demanding a distinct visual language, prompt strategy,
+      and emotional register.
+    </p>
+
+    <div class="works-grid">
+
+      <div class="work-card">
+        <div class="work-cat"><i class="ti ti-speakerphone" style="font-size:12px;"></i> Commercial &amp; brand</div>
+        <div class="work-title">FMCG Beverage Ad — "Power Your Day"</div>
+        <p class="work-concept">
+          High-energy promo for Boost: product preparation sequence, active lifestyle integration,
+          and direct-to-camera delivery with food-styling precision.
+        </p>
+        <div class="work-tags">
+          <span class="tag">Product realism</span>
+          <span class="tag">Food styling</span>
+          <span class="tag">D2C delivery</span>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-cat"><i class="ti ti-hanger" style="font-size:12px;"></i> Commercial &amp; brand</div>
+        <div class="work-title">Retail Fashion — "Style Meets Comfort"</div>
+        <p class="work-concept">
+          Dynamic H&amp;M store walkthrough with diverse character generation, hyper-detailed
+          environmental rendering of clothing racks and store lighting, fluid camera movement.
+        </p>
+        <div class="work-tags">
+          <span class="tag">Multi-character</span>
+          <span class="tag">Env. rendering</span>
+          <span class="tag">Camera motion</span>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-cat"><i class="ti ti-school" style="font-size:12px;"></i> Local &amp; institutional</div>
+        <div class="work-title">School Promo — "The Masterminds, Warangal"</div>
+        <p class="work-concept">
+          Warm, reassuring ad for parents: campus facilities, modern classrooms and playgrounds,
+          authentic emotional delivery, and integrated on-screen CTAs across multi-scene continuity.
+        </p>
+        <div class="work-tags">
+          <span class="tag">Emotional tone</span>
+          <span class="tag">Multi-scene</span>
+          <span class="tag">CTA overlays</span>
+        </div>
+      </div>
+
+      <div class="work-card">
+        <div class="work-cat"><i class="ti ti-music" style="font-size:12px;"></i> Narrative short</div>
+        <div class="work-title">Short Film — "A Cafe Melody"</div>
+        <p class="work-concept">
+          Multi-scene romantic short: a musician finds inspiration as a stranger arrives from the rain.
+          Nuanced facial expressions, weather effects, character interaction, and synchronized
+          musical performance.
+        </p>
+        <div class="work-tags">
+          <span class="tag">Multi-shot continuity</span>
+          <span class="tag">Weather FX</span>
+          <span class="tag">Audio-visual sync</span>
+        </div>
+      </div>
+
+      <div class="work-card full">
+        <div class="work-cat"><i class="ti ti-brand-youtube" style="font-size:12px;"></i> Social media &amp; influencer</div>
+        <div class="work-title">Product Review Concept — "Yamaha Acoustics"</div>
+        <p class="work-concept">
+          Realistic direct-to-camera instrument review for music enthusiasts and beginners.
+          Focus on hand-to-instrument realism, expressive delivery, and an inviting, well-lit
+          interior set — optimized for YouTube and Instagram retention.
+        </p>
+        <div class="work-tags">
+          <span class="tag">Hand realism</span>
+          <span class="tag">Retention-optimized</span>
+          <span class="tag">Set design</span>
+          <span class="tag">YouTube / Instagram</span>
+          <span class="tag">TikTok</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Google Drive link -->
+    <div class="works-link-block">
+      <div class="wlb-left">
+        <strong>Watch the full reel</strong>
+        <p>All produced videos are available on Google Drive — click to view the complete portfolio.</p>
+      </div>
+      <a class="wlb-btn" href="https://drive.google.com/drive/folders/1hEyTfTQGIspZmh9NJKucGUcOT8i8v9Qq?usp=drive_link" target="_blank" rel="noopener">
+        <i class="ti ti-player-play" style="font-size:13px;"></i> View works
+      </a>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- SKILLS -->
+  <div class="section">
+    <div class="section-tag">Core capabilities</div>
+    <div class="section-title">Technical skills</div>
+    <p class="section-desc">
+      Every deliverable is built on four interlocking competencies — from the first prompt to the final cut.
+    </p>
+
+    <div class="skills-grid">
+      <div class="skill-card">
+        <div class="skill-icon"><i class="ti ti-code"></i></div>
+        <div class="skill-name">Prompt engineering &amp; scene design</div>
+        <p class="skill-desc">
+          Crafting hyper-specific prompts that lock in precise lighting conditions, camera angles,
+          lens choices, and art direction before a single frame renders.
+        </p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="ti ti-face-id"></i></div>
+        <div class="skill-name">Strict facial consistency</div>
+        <p class="skill-desc">
+          Maintaining exact character identities — facial structures, styling, expressions —
+          across vastly different poses, environments, and lighting setups in multi-shot productions.
+        </p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="ti ti-microphone"></i></div>
+        <div class="skill-name">Audio-visual sync</div>
+        <p class="skill-desc">
+          Seamlessly integrating voiceovers, lip-syncing, and musical cues with AI-generated
+          visuals so audio and image form a single, coherent impression.
+        </p>
+      </div>
+      <div class="skill-card">
+        <div class="skill-icon"><i class="ti ti-cut"></i></div>
+        <div class="skill-name">Post-production &amp; editing</div>
+        <p class="skill-desc">
+          Refining generated clips into cohesive narratives with pacing, text overlays, colour
+          grading cues, and sound design — turning raw generations into broadcast-ready content.
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- CONTACT -->
+  <div class="section">
+    <div class="section-tag">Let's create together</div>
+    <div class="section-title">Start a project</div>
+    <p class="section-desc" style="margin-bottom:0;">
+      Looking to elevate your brand with next-generation video content?
+      Reach out directly — available for remote projects worldwide.
+    </p>
+
+    <div class="contact-grid">
+      <div class="contact-item">
+        <div class="contact-label"><i class="ti ti-mail" style="font-size:12px;"></i> Email</div>
+        <div class="contact-val">
+          <a href="mailto:ramagirinikhil09@gmail.com">ramagirinikhil09@gmail.com</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label"><i class="ti ti-phone" style="font-size:12px;"></i> Phone</div>
+        <div class="contact-val">
+          <a href="tel:+918008526627">+91 8008526627</a>
+        </div>
+      </div>
+      <div class="contact-item">
+        <div class="contact-label"><i class="ti ti-map-pin" style="font-size:12px;"></i> Location</div>
+        <div class="contact-val">Hanamkonda, Telangana, India</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <div class="footer">
+    <p>Built with <span>AI &amp; intention</span> &nbsp;·&nbsp; Ramagiri Nikhil &copy; 2026</p>
+  </div>
+
+</div>
+
+</body>
+</html>
